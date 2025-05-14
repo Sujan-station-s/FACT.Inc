@@ -1,0 +1,392 @@
+/* directors.css - (Add or modify styles as needed) */
+
+.director-tab-wrapper {
+  border-bottom: 1px solid #e0e0e0;
+  gap: 8px; /* Keep existing gap or adjust */
+  margin-bottom: 1rem; /* Ensure space below director tabs */
+}
+
+.director-tab-item {
+  padding: 10px 18px;
+  background-color: #f3f4f6; /* Light grey for inactive tabs */
+  border: 1px solid transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.director-tab-item.active {
+  background-color: #7353f6; /* Primary color for active tab */
+  /* border-color: #ddd #ddd transparent; */ /* Original border style, adjust if needed */
+  color: #fff; /* White text for active tab */
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05); /* Subtle shadow for active tab */
+}
+
+.tab-label {
+  font-size: 0.95rem; /* Slightly adjusted font size */
+}
+
+.tab-close {
+  font-size: 10px; /* Keep small for 'x' icon */
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter background on active tab */
+  border-radius: 50%;
+  color: #fff; /* White 'x' on active tab */
+  padding: 4px 6px; /* Slightly adjusted padding */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.director-tab-item:not(.active) .tab-close {
+  background-color: #f8d7da; /* Reddish for inactive tabs' close button */
+  color: #dc3545;
+}
+
+.director-tab-item:not(.active) .tab-close:hover {
+  background-color: #f1c6cb;
+}
+.director-tab-item.active .tab-close:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.add-director-tab {
+  background: linear-gradient(to right, #7353F6, #00c0ff);
+  color: #fff;
+  font-size: 18px;
+  width: 36px; /* Slightly larger */
+  height: 36px; /* Slightly larger */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.add-director-tab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Custom Sub-tabs styling (retained as per current structure in directors.jsx) */
+.sub-tabs {
+  display: flex;
+  align-items: stretch; /* Ensure tabs have same height if wrapped */
+  gap: 0.75rem; /* Spacing between tabs */
+  padding-bottom: 0.5rem; /* Space for active border */
+  margin-bottom: 1.5rem; /* Increased space below sub-tabs */
+  flex-wrap: wrap;
+}
+
+.sub-tabs .sub-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* Space between icon and text */
+  cursor: pointer;
+  padding: 0.6rem 1rem; /* Padding inside each tab */
+  border-radius: 8px; /* Rounded corners for tabs */
+  border-bottom: 3px solid transparent; /* For active indicator */
+  font-weight: 500;
+  color: #4B5563; /* Default text color */
+  background-color: #f3f4f6; /* Default background */
+  transition: all 0.3s ease;
+}
+
+.sub-tabs .sub-tab:hover {
+  background-color: #e5e7eb; /* Slightly darker on hover */
+  color: #1f2937;
+}
+
+.sub-tabs .sub-tab.active {
+  color: #7353F6; /* Light primary color for active tab background */
+  border-bottom-color: #7353F6; /* Primary color border for active tab */
+}
+
+.sub-tabs .sub-tab.disabled {
+  color: #9ca3af; /* Greyed out for disabled tabs */
+  background-color: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.sub-tabs .sub-tab .tab-icon-wrapper { /* If you use a wrapper for icons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem; /* Icon size */
+}
+.sub-tabs .sub-tab i { /* Direct icon styling */
+    font-size: 1.1rem;
+}
+
+
+/* Document Grid and Cards from original CSS, assuming these are fine */
+.document-carousel-container {
+  padding: 1rem;
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+}
+
+.document-card-grid {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  padding: 1.25rem; /* Slightly increased padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.document-card-grid:hover {
+  transform: translateY(-3px); /* Subtle lift effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.doc-header {
+  display: flex;
+  align-items: flex-start; /* Align items to start for varied text length */
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.document-icon {
+  width: 48px; /* Slightly larger icon container */
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px; /* Larger icon */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.document-icon-primary {background-color: #E0E7FF; color: #4F46E5;} /* Indigo theme */
+.document-icon-secondary {background-color: #E0F2FE; color: #0EA5E9;} /* Sky theme */
+.document-icon-info {background-color: #DBEAFE; color: #3B82F6;} /* Blue theme */
+.document-icon-success {background-color: #DCFCE7; color: #22C55E;} /* Green theme */
+.document-icon-warning {background-color: #FEF3C7; color: #F59E0B;} /* Amber theme */
+.document-icon-danger {background-color: #FEE2E2; color: #EF4444;} /* Red theme */
+
+
+.doc-info .document-title {
+  font-weight: 600;
+  font-size: 1.05rem; /* Slightly larger title */
+  margin: 0 0 0.25rem 0; /* Margin below title */
+  color: #1F2937;
+}
+
+.doc-info .document-subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.doc-info .text-truncate { /* Ensure this is effective */
+    max-width: 180px; /* Or adjust based on card width */
+}
+.doc-info .text-info { color: #0284c7 !important; } /* For server uploaded file name */
+.doc-info .text-success { color: #16a34a !important; } /* For locally selected file name */
+
+
+.upload-options-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem; /* Increased margin */
+  align-items: center; /* Align buttons vertically */
+}
+
+.btn-upload, .btn-upload-option, .btn-outline-info { /* Added .btn-outline-info for consistent sizing */
+  flex-grow: 1; /* Allow buttons to grow */
+  flex-basis: 0; /* Distribute space evenly */
+  padding: 0.6rem 0.5rem; /* Adjusted padding for smaller buttons */
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping that breaks layout */
+}
+
+/* Specific styles for view button to ensure it doesn't take too much space if other buttons are present */
+.upload-options-row .btn-outline-info {
+    flex-grow: 0.5; /* Make view button relatively smaller if needed */
+    border: 1px solid #0EA5E9; /* From document-icon-secondary for consistency */
+    color: #0EA5E9;
+}
+.upload-options-row .btn-outline-info:hover {
+    background-color: #E0F2FE;
+}
+
+
+.btn-upload {
+    background-color: #6366F1 !important; /* Indigo */
+    color: #fff !important;
+}
+.btn-upload:hover { background-color: #4F46E5 !important; }
+
+
+.btn-upload-option {
+    background-color: #f2f5f9 !important;
+    color: #4b5563;
+}
+.btn-upload-option:hover { background-color: #e5e7eb !important; }
+.btn-upload-option i {font-size: 1.1rem;} /* Slightly smaller icon */
+
+
+/* QR Popup Styles (from original, assuming they are fine and active class works) */
+.qr-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Matched transition duration */
+}
+
+.qr-popup-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1051;
+  width: 90%;
+  max-width: 450px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Matched transition duration */
+  display: flex;
+  flex-direction: column;
+}
+
+.qr-popup-overlay.active,
+.qr-popup-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-popup-modal.active {
+   transform: translate(-50%, -50%) scale(1);
+}
+
+.qr-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.qr-popup-header h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #343a40;
+}
+.qr-popup-header h5 strong {
+    font-weight: 700;
+    color: #7353f6; /* Using var(--primary-color) if defined, else direct value */
+}
+
+.qr-popup-content {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.qr-popup-image {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  max-width: 180px;
+  height: auto;
+  border: 1px solid #e9ecef;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.qr-popup-instructions {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.qr-popup-instructions strong {
+    color: #7353f6; /* Using var(--primary-color) if defined */
+}
+.qr-popup-waiting-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+
+.qr-popup-waiting-indicator .spinner-border {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+  margin-right: 0.6rem;
+  color: #7353f6; /* Using var(--primary-color) if defined */
+}
+.qr-popup-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  text-align: right;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+@media (max-width: 576px) {
+  .qr-popup-modal {
+    width: 95%;
+    max-width: none;
+  }
+  .qr-popup-header,
+  .qr-popup-content,
+  .qr-popup-footer {
+    padding: 1rem;
+  }
+   .qr-popup-header h5 {
+    font-size: 1rem;
+  }
+  .qr-popup-instructions {
+      font-size: 0.9rem;
+  }
+  .document-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+}

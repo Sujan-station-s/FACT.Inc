@@ -1,0 +1,500 @@
+ /* --- Base Styles (Keep essential ones) --- */
+ #app {
+    margin: 0;
+    padding: 0;
+    transform-origin: top left;
+    width: 100vw; /* gets overridden dynamically */
+    height: 100vh;
+  }
+
+    html, body {
+        height: 100%;
+        overflow: hidden; /* Prevent double scrollbars on body */
+        font-family: 'Poppins', sans-serif;
+    }
+    th {
+        font-weight: 300;
+        color: #444;
+        text-align: left;
+        padding: 12px 16px;
+        background-color: #f9f9f9;
+      
+        font-size: var(--font-sm);
+      }
+      td {
+        font-size: var(--font-sm);
+        color: #333;
+        padding: 10px 16px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 300;
+      }
+      
+      
+
+    .page-wrapper {
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .btn-prev {
+        background-color: #f8f9fa;
+        color: #6c757d;
+        border: 1px solid #dee2e6;
+        transition: all 0.3s ease;
+        padding: 0.6rem 1.2rem;
+        font-weight: var(--font-weight);
+        border-radius: 50px;
+    }
+
+    .btn-prev:hover:not(:disabled) {
+        background-color: #e9ecef;
+        color: #495057;
+    }
+
+    .btn-prev:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        /* Allow scrolling for the main content area */
+        padding: 1.5rem;
+        /* Full viewport height */
+        background-color: var(--light);
+    }
+
+    .card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        /* Dynamic height calculation:
+           Full viewport - progress bar height (estimate or measure) - main content padding */
+        height: 39rem; /* Adjust --progress-bar-height if needed */
+        /* Minimum height */
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden; /* Important: keeps content within card bounds */
+        flex-grow: 1; /* Allow card to grow if content area has space */
+    }
+
+     /* Hide non-active cards */
+     .sliding-card {
+        display: none; /* Hide by default */
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        /* REMOVED fixed height */
+        flex-direction: column; /* Maintain column layout */
+    }
+
+    .sliding-card.active {
+        display: flex; /* Show active card using flex */
+        opacity: 1;
+    }
+
+
+    .card .card-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        padding: 1rem 1.25rem; /* Slightly reduced padding */
+        border-bottom: none;
+        flex-shrink: 0;
+        /* Added for flexbox alignment */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card .card-header h5 {
+        color: #ffffff;
+        margin: 0;
+        font-weight: var(--font-weight);
+        font-size: var(--font-lg);
+    }
+
+    .card .card-header .card-step-display {
+        /* Badge styling is mostly handled by Bootstrap */
+        font-size: var(--font-sm); /* Slightly smaller font for badge */
+    }
+
+    .card .card-body {
+        flex-grow: 1; /* Allow body to grow */
+        /* REMOVED overflow-y: auto; */
+        background-color: #fff;
+         padding: 1.5rem; /* Consistent padding */
+         font-size: var(--font-sm); /* Bootstrap default slightly smaller */
+         line-height: 1.6;
+         color: var(--dark);
+    }
+
+    .navigation-divider {
+        margin-top: 2rem;
+        height: 1px;
+        background-color: #e8e8e8;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .navigation-buttons {
+        padding: 1rem 1.5rem;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        border-top: 1px solid #e8e8e8; /* Add top border for separation */
+    }
+
+    .modern-submit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.65rem 1.4rem; /* Adjusted padding */
+    border-radius: 50px;
+    font-weight: var(--font-weight);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(115, 83, 246, 0.2);
+}
+.modern-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(115, 83, 246, 0.3);
+    color: white;
+}
+.modern-submit-btn:disabled {
+     opacity: 0.65;
+     cursor: not-allowed;
+     background: linear-gradient(135deg, #a99adbb3, #7dc2d7b0);
+     box-shadow: none;
+     transform: none;
+}
+.modern-submit-btn i { font-size: var(--font-lg); }
+
+    .gradient-text {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* --- SPICE+ Form Specific Styles (Adapted for Bootstrap) --- */
+    .section-heading {
+        font-weight: var(--font-weight);
+        margin-bottom: 0.6rem; /* More space after heading */
+        font-size: var(--font-md);
+        border-bottom: 2px solid var(--primary-light);
+        color: var(--primary-color);
+        width: 100%;
+    }
+    .sub-heading {
+        font-weight: var(--font-weight);
+        font-size: var(--font-md);
+        color: #555;
+        width: 100%;
+        padding-left: 0; /* Remove padding */
+    }
+
+    .field-description {
+        font-size: var(--font-xs) !important;
+        color: #777;
+        display: block;
+        margin-top: 2px;
+        font-style: italic;
+        line-height: 1.3;
+        font-weight: normal !important; /* Descriptions not bold */
+    }
+    .asterisk { color: red; font-weight: bold; }
+
+    /* Bootstrap form overrides if needed */
+    .form-label_sp {
+        font-weight: var(--font-weight);
+        margin-bottom: 0.3rem; /* Smaller margin below label */
+        font-size: var(--font-md); /* Slightly smaller labels */
+        color: var(--dark);
+        margin-right: 1rem;
+    }
+
+    .form-control, .form-select {
+        font-size: var(--font-sm); /* Match card body font size */
+        border-radius: 8px;
+        border: 1px solid var(--input-border-color);
+        padding: 0.45rem 0.75rem; /* Adjust padding */
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(115, 83, 246, 0.25);
+        outline: none;
+    }
+    .form-control[readonly] {
+        background-color: #e9ecef;
+        opacity: 1;
+    }
+    textarea.form-control {
+        min-height: 60px; /* Adjust textarea height */
+    }
+
+    /* Radio/Checkbox styling using Bootstrap classes */
+    .form-check {
+         padding-left: 1.8em; /* Adjust alignment */
+         margin-bottom: 0.5rem;
+    }
+    .form-check-label {
+        font-size: var(--font-sm);
+        font-weight: normal;
+         line-height: 1.45;
+         cursor: pointer;
+         padding-top: 1px; /* Align label better */
+    }
+    .form-check-input {
+        cursor: pointer;
+        accent-color: var(--primary-color); /* Modern way to color */
+        margin-top: 0.25em; /* Align input */
+    }
+    .form-check-inline {
+        margin-right: 1rem; /* Space between inline items */
+    }
+    .form-check.no-indent {
+         padding-left: 0; /* For custom layouts where standard indent is not needed */
+    }
+
+    /* Table styling */
+    .data-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        font-size: var(--font-sm); /* Smaller table font */
+    }
+    .data-table th, .data-table td {
+        border: 1px solid var(--input-border-color);
+        padding: 6px 8px; /* Adjusted padding */
+        vertical-align: middle;
+        text-align: left;
+    }
+    .data-table th {
+        background-color: #f1f3f5;
+        color: #495057;
+        text-align: center;
+        font-weight: var(--font-weight);
+    }
+    .data-table td input[type="text"].form-control,
+    .data-table tr td:not(:first-child):not(:last-child) {
+         text-align: center;
+    }
+     .data-table td:first-child { text-align: left; font-weight: var(--font-weight); }
+     .data-table td:last-child { text-align: left; }
+
+    /* Borderless inputs in table */
+    .data-table input.form-control {
+        border: none; outline: none; background-color: transparent; padding: 2px; width: 100%;
+        box-shadow: none; border-radius: 0; font-size: var(--font-sm); text-align: center; min-height: auto;
+    }
+    .data-table input.form-control:focus { outline: none; box-shadow: none; background-color: #f0f8ff; }
+
+    /* DSC Placeholder Styling */
+    .dsc-placeholder {
+        border: 1px dashed var(--primary-color); padding: 8px; font-size: 11px; color: #777; margin-top: 5px;
+        min-height: 40px; display: flex; align-items: center; justify-content: center; text-align: center;
+        border-radius: 8px; background-color: #f8f9ff; width: 100%;
+    }
+     .dsc-placeholder.filled {
+        border: 1px solid var(--secondary-color); background-color: #f0f8ff; color: var(--dark);
+        font-family: monospace; white-space: pre; text-align: left; justify-content: flex-start;
+        padding: 6px 10px; font-size: 11px;
+    }
+    .dsc-placeholder pre { font-size: 10px; margin: 0; line-height: 1.3; }
+
+    .note { font-size: var(--font-sm); font-style: italic; margin-top: 20px; padding: 10px; border-top: 1px solid #eee; background-color: #f9f9f9; border-radius: 5px; }
+    hr { border: none; border-top: 1px solid #ddd; }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .card .card-body { padding: 1rem; }
+        .navigation-buttons { padding: 0.8rem 1rem; }
+        .modern-submit-btn { padding: 0.6rem 1.2rem; }
+        .form-label_sp { font-size: var(--font-sm); }
+        .form-control, .form-select { font-size: var(--font-sm); }
+        .section-heading { font-size: var(--font-md); margin-bottom: 1rem; }
+        .sub-heading { font-size: var(--font-sm); }
+        .data-table { font-size: var(--font-sm); }
+        /* Adjust header flex direction on smaller screens if needed */
+        .card .card-header { flex-wrap: wrap; } /* Allow wrapping if title is long */
+        .card .card-header h5 { margin-bottom: 0.3rem; width: 100%; } /* Title takes full width */
+        .card .card-header .card-step-display { width: 100%; text-align: right;} /* Badge aligns right */
+    }
+
+    /* === ADD THIS RULE === */
+    #equity-pref-card .card-body {
+        overflow-y: auto; /* Enable vertical scrolling ONLY for this card's body */
+        /* Optional: Add padding-right if scrollbar overlaps content */
+        padding-right: calc(1.5rem + 5px); /* Adjust base padding + scrollbar width */
+    }
+
+    #address-pref-card .card-body {
+        overflow-y: auto; /* Enable vertical scrolling ONLY for this card's body */
+        /* Optional: Add padding-right if scrollbar overlaps content */
+        padding-right: calc(1.5rem + 5px); 
+    }
+        
+    #seventhcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);/* Adjust base padding + scrollbar width */
+    }
+
+    #eightcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);/* Adjust base padding + scrollbar width */
+    }
+    #ninthcard-pre-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #thirteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    
+    }
+    #fourteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #thirtyeightcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #thirtninthcrad-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #fortycard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+        
+    }
+    #fortyonecrad-pref-card{
+        overflow-y: auto;
+    }
+    #fifteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #sixteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #eighteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #ninteenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+    #twentycard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #seventeenthcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #twentytwocard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    
+    }
+    #twentyusix-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #twentyseven-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #thirtytwocard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #thirtyfivecard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+    }
+    #twentyeightcard-pref-card .card-body{
+        overflow-y: auto;
+        padding-right: calc(1.5rem + 5px);
+
+    }
+  
+ 
+
+    .page-indicator-button {
+    display: inline-block; /* Needed for padding */
+    padding: 0.4rem 0.9rem; /* Adjust padding to match desired size */
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* White text */
+    border-radius: 50px; /* Creates the pill shape */
+    font-size: var(--font-md); /* Adjust font size if needed */
+    font-weight: var(--font-weight);  /* Make text slightly bolder */
+    text-align: center;
+    border: none; /* Remove default badge border if any */
+    white-space: nowrap; /* Prevent text wrapping */
+    line-height: 1.3; /* Adjust vertical alignment slightly */
+    vertical-align: middle; /* Align with the title */
+}
+    .magic{
+        background: white;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 999px;
+        float: right;
+        transition: all 0.3s ease;
+        gap: 8px;
+    }
+    .magic:hover {
+        background: white;
+        transform: translateY(-2px);
+        
+    }
+
+    /* Tabs wrapper */
+.tab-container {
+    display: flex;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 1rem;
+    gap: 8px;
+  }
+  
+  /* Each tab button */
+  .tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: #f3f4f6;
+    color: #000;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .tab-button:hover {
+    background-color: #e5e7eb;
+  }
+  
+  /* Active tab */
+  .tab-button.active {
+    background-color: #7c3aed; /* Violet */
+    color: white;
+  }

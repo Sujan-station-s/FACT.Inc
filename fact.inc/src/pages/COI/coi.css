@@ -1,0 +1,386 @@
+
+/* --- START: Main Page Styles (Combined & Refined) --- */
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif; /* Apply font globally */
+    background-color: #f0f2f5; /* Light background for the page */
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.page-wrapper {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px 20px 0px 20px;  
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack progress bar and card */
+}
+#app {
+    margin: 0;
+    padding: 0;
+    transform-origin: top left;
+    width: 100vw; /* gets overridden dynamically */
+    height: 100vh;
+  }
+/* Card1 is the progress bar container */
+.card1 {
+     border-radius: 12px;
+     box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+     border: none;
+     margin-bottom: 25px; /* Space below progress bar */
+     background-color: #fff;
+     flex-shrink: 0; /* Prevent progress bar from shrinking */
+}
+.animate-fade-in {
+    animation: animate-fade-in 0.5s ease forwards;
+}
+ @keyframes animate-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+ .animate-fade-up {
+     animation: animate-fade-up 0.6s ease-out forwards;
+ }
+ @keyframes animate-fade-up {
+     from { opacity: 0; transform: translateY(20px); }
+     to { opacity: 1; transform: translateY(0); }
+ }
+
+/* Main Content Card Styling (COI Card) */
+.card { /* This is the main card for COI now */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none; /* Removed border, using shadow */
+    padding: 0;
+    
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Crucial */
+    background-color: #fff; /* Ensure background */
+    flex-grow: 1; /* Allow card to take remaining space */
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card .card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 1.1rem 1.5rem; /* Adjusted padding */
+    border-bottom: none;
+    flex-shrink: 0; /* Prevent header shrinking */
+}
+
+.card .card-header h5 {
+    color: #ffffff;
+    margin: 0;
+    font-weight: var(--font-weight);
+    font-size: var(--font-lg); /* Slightly larger */
+}
+
+/* Card Body houses the COI container */
+.card .card-body {
+    flex: 1; /* Allow body to grow and fill space */
+    padding: 0; /* Remove padding, COI container will manage it */
+    position: relative; /* For absolute positioning inside */
+    display: flex; /* Ensure children take space */
+    
+}
+
+
+
+
+.gradient-text { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; /* Standard property */ }
+
+
+/* --- END: Main Page Styles --- */
+
+
+/* --- START: COI Specific Styles (Integrated & Refined for New Layout) --- */
+.ocr-content {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;     /* Center horizontally */
+    justify-content: center; /* Optional: center vertically */
+    text-align: center;      /* Center text inside elements */
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+  
+/* Removed body, .main-container styles */
+
+.form-container_coi {
+    background: white;
+    height: 100%; /* Take full height of card-body */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: all var(--transition-speed);
+}
+
+
+
+.page-header_coi {
+    text-align: center; position: relative; margin-bottom: 20px; padding-top: 10px; animation: fadeIn 0.6s ease forwards;
+}
+
+/* Changed h1 to h4 */
+.page-header_coi h4 {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-weight: var(--font-weight); font-size: var(--font-lg); margin-bottom: 3px; display: inline-block;
+}
+
+.page-subtitle_coi { font-size: var(--font-sm); color: #777; margin-bottom: 0; }
+
+.content-container_coi { width: 100%; height: 100%; display: flex; transition: all 0.6s ease; position: relative; }
+
+/* Upload State */
+.upload-state_coi {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
+    transition: opacity 0.5s ease, visibility 0.5s ease; opacity: 1; visibility: visible; background-color: #fff; z-index: 5;
+}
+.upload-container_coi {
+    background: linear-gradient(to right, rgba(115, 83, 246, 0.04), rgba(0, 192, 255, 0.04)); border: 2px dashed rgba(115, 83, 246, 0.25); border-radius: var(--border-radius-lg);
+    padding: 35px 25px; text-align: center; transition: all 0.3s ease; cursor: pointer; width: 100%; max-width: 420px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 220px;
+}
+.upload-container_coi:hover { background: linear-gradient(to right, rgba(115, 83, 246, 0.07), rgba(0, 192, 255, 0.07)); transform: translateY(-4px); box-shadow: 0 6px 15px rgba(115, 83, 246, 0.12); border-color: rgba(115, 83, 246, 0.4); }
+.upload-icon_coi { font-size: var(--font-xxlgs); margin-bottom: 12px; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; background-clip: text; color: transparent; transition: transform 0.5s ease; }
+.upload-container_coi:hover .upload-icon_coi { transform: scale(1.1) translateY(-4px); }
+.upload-title_coi { font-weight: var(--font-weight); margin-bottom: 8px; color: var(--primary-color); font-size: var(--font-lg); }
+.upload-subtitle_coi { color: #777; font-size: var(--font-sm); margin-bottom: 15px; max-width: 95%; }
+.browse-btn_coi { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); color: white; border: none; padding: 9px 18px; border-radius: 8px; font-weight: var(--font-weight); transition: all 0.3s; margin-top: 8px; font-size: var(--font-sm); }
+.browse-btn_coi:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(115, 83, 246, 0.25); }
+.upload-container_coi input[type="file"] { display: none; }
+.file-name-display_coi { background: #f8f9fa; padding: 7px 14px; border-radius: 6px; font-size: var(--font-sm); color: #555; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); display: none; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 12px; }
+
+/* Form State (Preview + Fields) */
+.form-state_coi { display: flex; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 0.5s ease 0.2s, visibility 0.5s ease 0.2s; z-index: 1; }
+.form-container_coi.uploaded .upload-state_coi { opacity: 0; visibility: hidden; pointer-events: none; z-index: 1; }
+.form-container_coi.uploaded .form-state_coi { opacity: 1; visibility: visible; z-index: 5; }
+
+/* --- Layout Swap Styles --- */
+/* Form Fields Side (LEFT) */
+.form-side_coi {
+    flex: 0.6; /* Adjust ratio as needed */
+    padding: 0.2rem 0.5rem;
+    height: 100%;
+    overflow-y: auto; /* Scrollbar for form */
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e9ecef; /* Border on the right */
+}
+/* PDF Preview Side (RIGHT) */
+.pdf-side_coi {
+    flex: 0.4; /* Adjust ratio as needed */
+    padding: 15px 15px 15px 10px; /* T R B L */
+    /* border-right: none; REMOVED */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; /* Contain preview */
+}
+/* --- End Layout Swap Styles --- */
+
+.form-content_coi { padding-right: 8px; flex-grow: 1; scrollbar-width: thin; scrollbar-color: var(--primary-color) #f0f0f0; }
+.form-content_coi::-webkit-scrollbar { width: 6px; }
+.form-content_coi::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
+.form-content_coi::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+
+.form-section_coi { opacity: 0; transform: translateX(15px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.form-container_coi.uploaded .form-section_coi { opacity: 1; transform: translateX(0); }
+.form-container_coi.uploaded .form-section_coi:nth-child(1) { transition-delay: 0.25s; }
+.form-container_coi.uploaded .form-section_coi:nth-child(2) { transition-delay: 0.35s; }
+.form-section_coi-title { font-weight: var(--font-weight); color: var(--primary-color); margin-bottom: 12px; font-size: var(--font-md); padding-bottom: 6px; border-bottom: 1px solid var(--primary-light); display: flex; align-items: center; }
+.form-section_coi-title i { margin-right: 8px; font-size: var(--font-lg); background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.form-group_coi { margin-bottom: 12px; position: relative; }
+.form-control_coi { border: 1px solid #d9dee3; border-radius: var(--input-border-radius); padding: 8px 12px; padding-right: 35px; height: 38px; font-size: var(--font-sm); transition: all 0.3s; background-color: #fdfdff; width: 100%; }
+.input-group { position: relative; }
+.form-group_coi .input-group .form-control_coi { border-radius: var(--input-border-radius) !important; }
+.form-control_coi:focus { border-color: var(--primary-color); box-shadow: 0 0 0 0.15rem rgba(115, 83, 246, 0.15); background-color: white; }
+input::placeholder { color: #adb5bd; opacity: 1; }
+textarea.form-control_coi { resize: none; overflow-y: hidden; min-height: 88px; height: auto; padding-right: 12px; /* Normal padding for textarea */ }
+.form-group_coi label { font-weight: var(--font-weight); margin-bottom: 4px; display: block; color: #555; font-size: var(--font-xs); }
+/* Adjust icon position for LTR */
+.form-control_coi-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #aaa; z-index: 3; pointer-events: none; font-size: var(--font-md); }
+/* Special handling for date input icon click area */
+input[type="date"] { position: relative; }
+input[type="date"]::-webkit-calendar-picker-indicator { background: transparent; color: transparent; cursor: pointer; position: absolute; right: 0; top: 0; width: 35px; height: 100%; opacity: 0; }
+
+
+/* PDF Preview Section */
+.document-preview_coi-wrapper { display: flex; flex-direction: column; flex: 1; height: 100%; overflow: hidden; }
+.document-preview_coi-wrapper h4.form-section_coi-title { margin-bottom: 8px; padding-bottom: 4px; font-size: var(--font-md); flex-shrink: 0; border-bottom: none; }
+.document-preview_coi { flex: 1; border-radius: calc(var(--border-radius-lg) - 6px); border: 1px solid #e0e4e8; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); position: relative; margin-bottom: 8px; transition: all 0.3s ease; min-height: 150px; background: #f8f9fa; display: flex; justify-content: center; align-items: center; }
+.pdf-preview-container_coi { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; position: relative; overflow: auto; }
+.pdf-preview-container_coi canvas { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); border-radius: 4px; display: block; }
+.preview-toolbar { display: flex; justify-content: center; align-items: center; gap: 10px; flex-shrink: 0; padding: 0 5px; height: 25px; }
+.preview-info { font-size: var(--font-xs); color: #666; text-align: center; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.no-document-state { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #aaa; padding: 15px; height: 100%; text-align: center; }
+.no-document-icon { font-size: var(--font-xxlg); margin-bottom: 8px; opacity: 0.5; }
+.no-document-state p { font-size: var(--font-sm); }
+.progress-container_coi { width: 80%; max-width: 150px; margin: 8px auto; display: none; flex-shrink: 0; }
+.progress { height: 5px; border-radius: 10px; overflow: hidden; background-color: #e9ecef; }
+.progress-bar { background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); transition: width 0.3s ease; }
+
+/* Animations & OCR */
+@keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ocr-processing {
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: inherit;
+    padding: 15px;
+  }
+  
+  .ocr-processing.active {
+    display: flex;
+  }
+  
+  .ocr-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .ocr-icon {
+    font-size: var(--font-xxlg);
+    margin-bottom: 10px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  }
+  
+  .ocr-text {
+    font-size: var(--font-md);
+    font-weight: var(--font-weight);
+    color: var(--primary-color);
+    margin-bottom: 5px;
+  }
+  
+  .ocr-subtext {
+    font-size: var(--font-sm);
+    color: #777;
+    max-width: 250px;
+  }
+  
+  #extractionStatus {
+    margin-top: 12px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .extraction-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeSlideIn 0.4s ease forwards;
+  }
+  
+  .extraction-icon {
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    color: white;
+    font-size: var(--font-xs);
+    flex-shrink: 0;
+  }
+  
+  .extraction-text {
+    font-size: var(--font-sm);
+    color: #555;
+  }
+  
+
+/* Responsive adjustments for Layout Swap */
+@media (max-width: 992px) {
+    .main-content { padding: 20px; }
+    .card { height: calc(100% - 100px); }
+    .form-state_coi { flex-direction: column-reverse; } /* Form below preview visually */
+
+    /* PDF side appears first (top) */
+     .pdf-side_coi {
+         flex: none; width: 100%;
+         height: 35vh; max-height: 280px;
+         padding: 10px;
+         border-bottom: 1px solid #e9ecef; /* Add border bottom */
+     }
+     /* Form side appears second (bottom) */
+    .form-side_coi {
+        flex: 1; height: auto;
+         max-height: calc(100% - 35vh - 1px);
+         padding: 10px;
+         border-right: none; /* Remove right border */
+         overflow-y: auto; /* Independent scroll */
+    }
+     .form-content_coi { padding-right: 5px; }
+     .form-side_coi .page-header_coi { padding-top: 5px; margin-bottom: 10px; }
+     .page-header_coi h4 { font-size: var(--font-lg); }
+}
+
+@media (max-width: 768px) {
+    
+    .page-header_coi h4 { font-size: var(--font-lg); } .page-subtitle_coi { font-size: var(--font-sm); }
+    .upload-container_coi { padding: 25px 15px; max-width: 90%; min-height: 200px; } .upload-icon_coi { font-size: var(--font-xxlgs); }
+    .pdf-side_coi { height: 30vh; max-height: 250px; }
+    .form-side_coi { max-height: calc(100% - 30vh - 1px); }
+    .form-control_coi { height: 36px; font-size: var(--font-xs); padding: 6px 10px; padding-right: 30px; }
+    .form-group_coi label { font-size: var(--font-xs); } .form-control_coi-icon { right: 8px; font-size: var(--font-sm); }
+    input[type="date"]::-webkit-calendar-picker-indicator { width: 30px; }
+}
+
+@media (max-width: 576px) {
+    
+   
+    .page-header_coi h4 { font-size: var(--font-lg); } .page-subtitle_coi { font-size: var(--font-xs); }
+    .upload-container_coi { padding: 20px 10px; } .browse-btn_coi { padding: 7px 14px; font-size: var(--font-sm);} .file-name-display_coi { font-size: var(--font-xs); }
+    .pdf-side_coi { height: 25vh; max-height: 180px; }
+    .form-side_coi { max-height: calc(100% - 25vh - 1px); }
+    .ocr-text { font-size: var(--font-md); } .ocr-subtext { font-size: var(--font-xs); } .extraction-text { font-size: var(--font-xs); }
+}
+/* --- END: COI Specific Styles --- */
+
+#address {
+    height: 200px; /* or any height you prefer */
+  }
+  
+
+  
