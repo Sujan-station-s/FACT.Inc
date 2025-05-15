@@ -174,8 +174,8 @@ export default function SpicePartB() {
   const [nonIndividualSubscribers, setNonIndividualSubscribers] = useState([]);
   const [nonIndTab, setNonIndTab] = useState(0);
   // Note: equityClasses & prefClasses are used locally in Case 6 JSX, might need to be part of nonIndividualSubscribers objects
-  const [equityClasses, setEquityClasses] = useState([{ num: '', nominal: '' }]);
-  const [prefClasses, setPrefClasses] = useState([{ num: '', nominal: '' }]);
+  // const [equityClasses, setEquityClasses] = useState([{ num: '', nominal: '' }]);
+  // const [prefClasses, setPrefClasses] = useState([{ num: '', nominal: '' }]);
 
   const [subscribers, setSubscribers] = useState([]);
   const [activeTab, setActiveTab] = useState(0);

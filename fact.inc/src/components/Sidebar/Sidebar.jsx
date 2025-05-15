@@ -1246,6 +1246,7 @@ export default function Sidebar() {
                 }
                 onClick={handleNavLinkClick}
               >
+                
                 <i className="bi bi-key sidebar-menu-icon"></i>{" "}
                 <span>Digital Credentials</span>
               </NavLink>

@@ -85,6 +85,10 @@ export const saveDirectorAddressDetailsAPI = async (directorData, orgId = ORG_ID
   }
 };
 
+// ... other imports ...
+
+// ... fetchDirectorInfoAPI, saveDirectorNameDetailsAPI, saveDirectorAddressDetailsAPI remain the same ...
+
 export const saveDirectorPersonalAndDinDscDetailsAPI = async (directorData, orgId = ORG_ID) => {
   if (!directorData.dir_id) {
     console.error("Cannot save personal/DIN/DSC details: dir_id is missing.");
@@ -114,10 +118,17 @@ export const saveDirectorPersonalAndDinDscDetailsAPI = async (directorData, orgI
 
     DIN: directorData.hasDIN === "yes" ? directorData.dinNumber : "",
     dsc_available: directorData.hasDSC === "yes",
+    // If dsc_available is true, you might also need to send is_dsc_registered
+    // For example: is_dsc_registered: directorData.hasDSC === "yes" ? (directorData.isDSCRegistered === "yes") : null,
+    // Check backend requirements for is_dsc_registered if it's collected.
+
+    applicantType: directorData.applicantType || null,
+    roleType: directorData.roleType || null, // MODIFIED: role_type to role, added || null for consistency
+    PAN_number: directorData.PAN_number || null, // Ensured panNumber is sent, added || null
   };
 
   try {
-    const response = await fetch(`http://3.111.226.182/factops/coform/updateDirDetails`, {
+    const response = await fetch(`http://3.111.226.182/factops/coform/updateDirDetails`, { // Ensure this URL is correct
       method: "POST",
       headers: {
         Authorization: `Bearer ${AUTH_TOKEN}`,
@@ -131,6 +142,8 @@ export const saveDirectorPersonalAndDinDscDetailsAPI = async (directorData, orgI
     throw error;
   }
 };
+
+// ... uploadDirectorDocumentAPI remains the same ...
 
 /**
  * Uploads a director document.

@@ -1,6 +1,6 @@
 export const API_BASE_URL = "http://3.111.226.182/factops/coform/";
 export const AUTH_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MjgyMDMxLCJpYXQiOjE3NDcxOTU2MzEsImp0aSI6ImM0OTQ5OGIyMzBjNjQ4NzFhNmMyNDVjYTI4ZTMwY2FlIiwiZW1haWwiOiJvRUl0N1A3cFJTc0V3Tmt1TTJLM0NtRnU0WHlnNEhDeEItQVpRNzg5aF9pWXZtSFZQMTRzdm9pNXdNZDJfWWwzN2JNPSIsIm1vYmlsZSI6IjB4amhXS0hSU1NSUFVKR3llNlhUWl9fdjlibnRnVFYzSmkwOVEwTkpFSkpuRU5kelFQaz0iLCJ1c2VyX2lkIjoxMTExMTEsInJvbGUiOiJnZW5lcmFsIn0.4mwhbAbLcoypjWF42U0PLqIR7nElCOYwgU1AthR2F8I";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MzcwNTA0LCJpYXQiOjE3NDcyODQxMDQsImp0aSI6ImJhZWQ0ODBlN2U4ZjRhMzE5YmZjNGUwOGJhN2YyNzUzIiwiZW1haWwiOiJvRUl0N1A3cFJTc0V3Tmt1TTJLM0NtRnU0WHlnNEhDeEItQVpRNzg5aF9pWXZtSFZQMTRzdm9pNXdNZDJfWWwzN2JNPSIsIm1vYmlsZSI6IjB4amhXS0hSU1NSUFVKR3llNlhUWl9fdjlibnRnVFYzSmkwOVEwTkpFSkpuRU5kelFQaz0iLCJ1c2VyX2lkIjoxMTExMTEsInJvbGUiOiJnZW5lcmFsIn0.8TKF4kem1fcnSnuON8WaQms16z4Jdwtn6hEpr71JAvk";
 export const ORG_ID = 101101;
 
 export const MIN_DIRECTORS = 2;
@@ -26,6 +26,9 @@ export const initialDirectorData = {
   experience: "",
   hasDIN: "no",
   dinNumber: "",
+  applicantType: "", // "individual" or "non-individual"
+  roleType: "", // "director", "subscriber", or "director_subscriber"
+  PAN_number: "",
   hasDSC: "no",
   isDSCRegistered: "no",
   currentAddress1: "",
@@ -50,7 +53,7 @@ export const directorSubPageNavItems = [
   { id: "personal", label: "Personal", icon: "bi-person-lines-fill" },
   { id: "din", label: "DIN/DSC", icon: "bi-file-earmark-text" },
   { id: "address", label: "Address", icon: "bi-geo-alt" },
-  { id: "docs", label: "Docs", icon: "bi-file-earmark-check" },
+  { id: "docs", label: "Required Documents", icon: "bi-file-earmark-check" },
 ];
 
 export const indianStates = [

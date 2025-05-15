@@ -206,8 +206,14 @@ export default function DirectorsPage() {
           currentDirector.occupationArea ||
         originalDirectorDataSnapshot.experience !==
           currentDirector.experience ||
+        // Fields from DirectorDinDscForm
+        originalDirectorDataSnapshot.applicantType !==
+          currentDirector.applicantType || // MODIFIED
+        originalDirectorDataSnapshot.roleType !== currentDirector.roleType || // MODIFIED
         originalDirectorDataSnapshot.hasDIN !== currentDirector.hasDIN ||
         originalDirectorDataSnapshot.dinNumber !== currentDirector.dinNumber ||
+        originalDirectorDataSnapshot.PAN_number !==
+          currentDirector.PAN_number || // MODIFIED
         originalDirectorDataSnapshot.hasDSC !== currentDirector.hasDSC ||
         originalDirectorDataSnapshot.isDSCRegistered !==
           currentDirector.isDSCRegistered;
@@ -461,9 +467,11 @@ export default function DirectorsPage() {
     },
     [directorsData, showAppNotification, ORG_ID, activeDirector]
   );
+  // console.log("Saving director:", directorToSave);
 
   const directorSaveActions = {
     saveName: saveDirectorNameDetails,
+
     savePersonalDinDsc: saveDirectorPersonalAndDinDscDetails,
     saveAddress: saveDirectorAddressDetails,
   };
@@ -499,7 +507,7 @@ export default function DirectorsPage() {
         result.data.length > 0
       ) {
         const fetchedDirectors = result.data.map((dir) => ({
-          ...initialDirectorData,
+          ...initialDirectorData, // Start with defaults
           dir_id: dir.dir_id || null,
           fullName: dir.name || "",
           preferredFirstName: dir.firstname || "",
@@ -511,35 +519,46 @@ export default function DirectorsPage() {
           dob: dir.dob || "",
           gender: dir.gender || "",
           nationality:
-            dir.nationality || (dir.director_type === "indian" ? "Indian" : ""),
+            dir.nationality ||
+            (dir.director_type === "indian"
+              ? "Indian"
+              : initialDirectorData.nationality),
           email: dir.email || "",
           phone: dir.phone || dir.mobile || "",
           education: dir.education || dir.edu || "",
           occupationType: dir.occupation_type || dir.occupation || "",
           occupationArea: dir.occupation_area || "",
           experience: dir.experience || "",
+
+          // DIN/DSC and related fields
+          applicantType: dir.applicantType || initialDirectorData.applicantType, // MODIFIED
+          roleType: dir.roleType || initialDirectorData.roleType, // MODIFIED
           hasDIN:
             dir.has_din === "yes" || dir.has_din === true || !!dir.DIN
               ? "yes"
-              : "no",
+              : initialDirectorData.hasDIN, // Fallback to initial data
           dinNumber: dir.din_number || dir.DIN || "",
+          PAN_number: dir.PAN_number || initialDirectorData.PAN_number, // MODIFIED
+
           hasDSC:
             dir.has_dsc === "yes" ||
             dir.has_dsc === true ||
             dir.dsc_available === true
               ? "yes"
-              : "no",
+              : initialDirectorData.hasDSC, // Fallback to initial data
           isDSCRegistered:
             dir.is_dsc_registered === "yes" || dir.is_dsc_registered === true
               ? "yes"
-              : "no",
+              : initialDirectorData.isDSCRegistered, // Fallback to initial data, assuming backend might send is_dsc_registered
+
+          // Address fields
           currentAddress1: dir.address?.pe_line1 || "",
           currentAddress2: dir.address?.pe_line2 || "",
           currentCity: dir.address?.pe_city || "",
           currentState: dir.address?.pe_state_or_ut || "",
           currentPin: dir.address?.pe_pin_code || "",
           currentCountry: dir.address?.pe_country || "India",
-          showPermanentAddress: dir.show_permanent_address === true,
+          showPermanentAddress: dir.show_permanent_address === true, // Assuming this comes from backend
           permanentAddress1: dir.address?.pr_line1 || "",
           permanentAddress2: dir.address?.pr_line2 || "",
           permanentCity: dir.address?.pr_city || "",
